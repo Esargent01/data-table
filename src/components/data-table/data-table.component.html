@@ -1,0 +1,23 @@
+<form [formGroup]="tableForm">
+  <div class="form-controls">
+    <input type="checkbox" (change)="onSelectAll($event)" id="selectAll" formControlName="selectAll" [indeterminate]="partialSelection">
+    <label for="selectAll">{{"Selected: " + (selectedCount > 0 ? selectedCount : 'None Selected')}}</label>
+    <button class="download" (click)="downloadData()">
+      <i class="fa fa-download"></i>
+      Download Selected
+    </button>
+  </div>
+  <table >
+    <tr>
+      <th></th>
+      <th *ngFor="let header of tableHeaders">{{header | titlecase}}</th>
+    </tr>
+      <tr formArrayName="data" *ngFor="let data of mockData; let i=index" [ngClass]="{'selected': tableForm.controls.data.value[i]}">
+        <td><input type="checkbox" id="selectData" [value]="data" [formControlName]="i" (change)="onSelectionChange($event, i)"></td>
+        <td>{{data.name}}</td>
+        <td>{{data.device}}</td>
+        <td>{{data.path}}</td>
+        <td [ngClass]="{'available': data.status === 'available'}">{{data.status | titlecase}}</td>
+      </tr>
+  </table>
+</form>

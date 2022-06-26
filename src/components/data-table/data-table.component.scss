@@ -1,0 +1,52 @@
+.form-controls {
+  border-bottom: 1px solid #dddddd;
+  padding: 10px 30px;
+  display: flex;
+  font-size: 20px;
+
+  label {
+    margin: 0 10px;
+  }
+
+  .download {
+    border: none;
+    background: transparent;
+    margin-left: 20px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+
+    td, th {
+      border-bottom: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px 30px;
+      position: relative;
+
+      &.available{
+        &:before {
+          content: "";
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          border-radius: 10px;
+          background: #82d033;
+          left: 0;
+        }
+      }
+    }
+    
+    tr {
+      &.selected {
+        background: #dddddd;
+      }
+      &:hover {
+        background-color: #f5f5f5;
+        cursor: pointer;
+      };
+    }
+  }
